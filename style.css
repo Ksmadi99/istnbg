@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #E6E6FA, #FFB6C1); /* Lavender to Pink */
+    color: #333;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+}
+nav {
+    background: rgba(255, 105, 180, 0.9); /* Strawberry Pink */
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #008080; /* Teal */
+}
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: url('https://via.placeholder.com/1200x300/FF69B4/E6E6FA?text=IST+Future+Boys+2026+Debut') no-repeat center/cover;
+    color: white;
+}
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+section {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.card {
+    background: rgba(0, 128, 128, 0.1); /* Teal tint */
+    border: 2px solid #FF69B4; /* Pink border */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: scale(1.03);
+}
+.card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #008080; /* Teal */
+    color: white;
+}
+@media (max-width: 600px) {
+    h1 { font-size: 1.8em; }
+    nav a { font-size: 1em; margin: 0 5px; }
+}
