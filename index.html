@@ -20,17 +20,28 @@
         .social-link a:hover {
             color: #008080;
         }
-        .footer-social {
-            margin-top: 10px;
-        }
-        .footer-social a {
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background: #FF69B4; /* Pink background */
             color: white;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 1.2em;
+            padding: 20px;
+            margin-top: 20px;
         }
-        .footer-social a:hover {
-            color: #FF69B4;
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            text-align: center;
+        }
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer-section a:hover {
+            color: #008080;
         }
         .card img {
             position: relative;
@@ -41,7 +52,7 @@
             right: 5px;
             font-size: 1.5em;
             color: #FF69B4;
-            background: rgba(255, 255, 255, 0.7); /* Slight white background for readability */
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
             padding: 2px;
         }
@@ -49,18 +60,11 @@
             font-size: 1.2em;
             margin: 5px 0;
         }
-        .contact-info {
-            text-align: center;
-            margin-top: 10px;
-            color: white;
-        }
-        .contact-info a {
-            color: #FF69B4;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        .contact-info a:hover {
-            color: #008080;
+        @media (max-width: 600px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -140,20 +144,25 @@
         </div>
     </section>
     
-    <footer>
-        <p>Unofficial Fan Site | Made with ❤️ for IST Future Boys | 2026 Debut | Images via Kpopping & Fandom</p>
-        <div class="footer-social">
-            <p>Follow IST Entertainment: 
+    <footer class="footer">
+        <div class="footer-section">
+            <p>Unofficial Fan Site | Made with ❤️ for IST Future Boys</p>
+            <p>Debut: Q1 2026 | Images via Kpopping & Fandom</p>
+        </div>
+        <div class="footer-section">
+            <p>Follow IST Entertainment:</p>
+            <p>
                 <a href="https://twitter.com/ist_ent" target="_blank" title="Twitter">🐦</a>
                 <a href="https://www.instagram.com/ist_entertainment/" target="_blank" title="Instagram">📸</a>
             </p>
         </div>
-        <div class="contact-info">
+        <div class="footer-section">
             <p>Contact IST Entertainment:</p>
             <p>Business: <a href="mailto:istent_business@istent.co.kr">istent_business@istent.co.kr</a></p>
             <p>Fan Staff: <a href="mailto:istent_fanstaff@istent.co.kr">istent_fanstaff@istent.co.kr</a></p>
             <p>Audition Apply: <a href="mailto:audition@istent.co.kr">audition@istent.co.kr</a></p>
-            <p>Audition Inquiry: 
+            <p>Audition Inquiry:</p>
+            <p>
                 <a href="https://twitter.com/istent_audition" target="_blank" title="Twitter">🐦</a>
                 <a href="https://www.instagram.com/istent_audition/" target="_blank" title="Instagram">📸</a>
                 <a href="https://www.facebook.com/istent.audition" target="_blank" title="Facebook">👍</a>
