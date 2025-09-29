@@ -10,15 +10,15 @@
             text-align: center;
             margin: 20px 0;
             font-size: 1.1em;
-            color: #008080; /* Teal for links */
+            color: #008080;
         }
         .social-link a {
-            color: #FF69B4; /* Pink for trainee IG */
+            color: #FF69B4;
             text-decoration: none;
             font-weight: bold;
         }
         .social-link a:hover {
-            color: #008080; /* Teal on hover */
+            color: #008080;
         }
         .footer-social {
             margin-top: 10px;
@@ -30,7 +30,24 @@
             font-size: 1.2em;
         }
         .footer-social a:hover {
-            color: #FF69B4; /* Pink on hover */
+            color: #FF69B4;
+        }
+        .card img {
+            position: relative;
+        }
+        .card .star-seal {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 1.5em;
+            color: #FF69B4;
+            background: rgba(255, 255, 255, 0.7); /* Slight white background for readability */
+            border-radius: 50%;
+            padding: 2px;
+        }
+        .card .emoji-row {
+            font-size: 1.2em;
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -46,14 +63,13 @@
     
     <header>
         <h1>IST Future Boys</h1>
-        <p>7 Stars Rising: Q1 2026 Debut with Donggyu, Shiwan, Arctic, Rensho & More!</p>
+        <p>7 Stars Rising: Q1 2026 Debut with Donggyu, Sihwan, Arctic, Rensho & More!</p>
     </header>
     
     <section>
         <h2>Welcome to the Future!</h2>
-        <p>Join us in hyping IST Entertainment’s next boy group, born from the epic *Boys II Planet* stage. Meet our 7 future stars, led by fan-faves Park Donggyu, Kim Shiwan, Arctic, and Rensho, plus 3 mystery talents waiting to shine!</p>
+        <p>Join us in hyping IST Entertainment’s next boy group, born from the epic *Boys II Planet* stage. Meet our 7 future stars, led by fan-faves Park Donggyu, Kim Sihwan, Arctic, and Rensho, plus 3 mystery talents waiting to shine!</p>
         
-        <!-- Trainee IG Link Above Grid -->
         <div class="social-link">
             <p>Follow our trainees on Instagram: <a href="https://www.instagram.com/0v__x0/" target="_blank">@0v__x0</a></p>
         </div>
@@ -61,37 +77,51 @@
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
             <div class="card">
                 <img src="profileimages/parkdonggyu.jpg" alt="Park Donggyu" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                <span class="star-seal">🌳</span>
                 <h3>Park Donggyu</h3>
+                <div class="emoji-row">🌳</div>
                 <p>Leader Vibes</p>
             </div>
             <div class="card">
-                <img src="profileimages/kimsihwan.jpg" alt="Kim Shiwan" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
-                <h3>Kim Shiwan</h3>
+                <img src="profileimages/kimsihwan.jpg" alt="Kim Sihwan" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                <span class="star-seal">🤗</span>
+                <h3>Kim Sihwan</h3>
+                <div class="emoji-row">🤗</div>
                 <p>Dance Star</p>
             </div>
             <div class="card">
                 <img src="profileimages/arctic.jpg" alt="Arctic" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                <span class="star-seal">🐶</span>
                 <h3>Arctic</h3>
+                <div class="emoji-row">🐶</div>
                 <p>Stage Charisma</p>
             </div>
             <div class="card">
                 <img src="profileimages/rensho.jpg" alt="Rensho" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                <span class="star-seal">👽</span>
                 <h3>Rensho</h3>
+                <div class="emoji-row">👽</div>
                 <p>Japanese Gem</p>
             </div>
             <div class="card">
                 <img src="profileimages/mystery1.jpg" alt="Mystery 1" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                <span class="star-seal">🦊</span>
                 <h3>Mystery 1</h3>
+                <div class="emoji-row">🦊</div>
                 <p>Coming Soon</p>
             </div>
             <div class="card">
                 <img src="profileimages/mystery2.jpg" alt="Mystery 2" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                <span class="star-seal">🦢</span>
                 <h3>Mystery 2</h3>
+                <div class="emoji-row">🦢</div>
                 <p>Coming Soon</p>
             </div>
             <div class="card">
                 <img src="profileimages/mystery3.jpg" alt="Mystery 3" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                <span class="star-seal">🔮</span>
                 <h3>Mystery 3</h3>
+                <div class="emoji-row">🔮</div>
                 <p>Coming Soon</p>
             </div>
         </div>
