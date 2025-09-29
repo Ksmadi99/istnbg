@@ -2,9 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #E6E6FA, #FFB6C1); /* Lavender to Pink */
+    background: linear-gradient(to bottom, #E6E6FA, #FFB6C1); /* Lavender to Pink, no sparkles */
     color: #333;
-    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
 }
 nav {
     background: rgba(255, 105, 180, 0.9); /* Strawberry Pink */
