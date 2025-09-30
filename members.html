@@ -3,112 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IST Future Boys — Members</title>
+  <title>Members</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .card {
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .member-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+      padding: 1rem;
       text-align: center;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.2s;
     }
-    .card:hover {
+
+    .member-card:hover {
       transform: scale(1.05);
     }
 
-    /* hidden detail section */
-    .member-detail {
-      display: none;
-      padding: 20px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
+    .member-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .detail-panel {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #fff;
       border-radius: 12px;
-      background: #f9f9f9;
-      text-align: left;
-      animation: fadeIn 0.4s ease;
-    }
-    .member-detail.active {
-      display: block;
+      box-shadow: 0 3px 8px rgba(0,0,0,.1);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .detail-panel.hidden {
+      display: none;
     }
 
-    .member-detail h3 {
+    .detail-box h2 {
       margin-top: 0;
-      color: #FF69B4;
     }
-    .member-detail p {
-      margin: 4px 0;
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+
+    .gallery img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .close-btn {
+      float: right;
+      background: #ff4d4d;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <h1>Our Members</h1>
 
-  <h1>IST Future Boys Members</h1>
-  <div id="members-container" class="container"></div>
+  <!-- Grid of members -->
+  <div id="members-grid" class="grid"></div>
+
+  <!-- Detail panel below the grid -->
+  <div id="member-detail" class="detail-panel hidden"></div>
 
   <script>
-    fetch('members.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('members-container');
-        data.members.forEach(m => {
-          // Card
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <img src="profileimages/${m.id}.jpg" alt="${m.stage_name}" width="150">
-            <h3>${m.emoji} ${m.stage_name}</h3>
-          `;
+    async function loadMembers() {
+      const res = await fetch("members.json");
+      const members = await res.json();
+      const grid = document.getElementById("members-grid");
+      const detailPanel = document.getElementById("member-detail");
 
-          // Hidden detail section
-          const detail = document.createElement('div');
-          detail.className = 'member-detail';
-          detail.innerHTML = `
-            <div>
-              <h3>Biodata</h3>
-              <p><strong>Birth Name:</strong> ${m.birth_name}</p>
-              <p><strong>Birthdate:</strong> ${m.birthdate}</p>
-              <p><strong>Birthplace:</strong> ${m.birthplace}</p>
-              <p><strong>Height:</strong> ${m.height}</p>
-              <p><strong>Weight:</strong> ${m.weight}</p>
-              <p><strong>Blood Type:</strong> ${m.blood_type}</p>
-              <p><strong>MBTI:</strong> ${m.mbti_type}</p>
-              <p><strong>Nationality:</strong> ${m.nationality}</p>
-              <p><strong>Education:</strong> ${m.education}</p>
-            </div>
-            <div>
-              <h3>Trainee Info</h3>
-              <p>${m.trainee_period}</p>
-            </div>
-            <div>
-              <h3>X Profile</h3>
-              <p><strong>Username:</strong> ${m.x_profile.username}</p>
-              <p><strong>Bio:</strong> ${m.x_profile.bio}</p>
-              <p><strong>Followers:</strong> ${m.x_profile.followers_count}</p>
-            </div>
-            <div>
-              <h3>Participation</h3>
-              <p><strong>Show:</strong> ${m.participation.show}</p>
-              <p><strong>Rank:</strong> ${m.participation.rank}</p>
-              <p><strong>Performance:</strong> ${m.participation.notable_performance}</p>
-            </div>
-          `;
+      members.forEach((m, i) => {
+        const card = document.createElement("div");
+        card.className = "member-card";
+        card.innerHTML = `
+          <img src="${m.image}" alt="${m.name}">
+          <h3>${m.name}</h3>
+          <p>${m.role}</p>
+        `;
 
-          // Toggle on click
-          card.addEventListener('click', () => {
-            detail.classList.toggle('active');
-          });
+        card.addEventListener("click", () => {
+          if (detailPanel.dataset.active === i.toString()) {
+            // Close if clicked again
+            detailPanel.classList.add("hidden");
+            detailPanel.innerHTML = "";
+            detailPanel.dataset.active = "";
+          } else {
+            // Open new detail
+            detailPanel.innerHTML = `
+              <button class="close-btn">&times;</button>
+              <div class="detail-box">
+                <h2>${m.name}</h2>
+                <h4>Biodata</h4>
+                <p>${m.biodata}</p>
+                <h4>Participant</h4>
+                <p>${m.participant}</p>
+                <h4>Gallery</h4>
+                <div class="gallery">
+                  ${m.gallery.map(img => `<img src="${img}" />`).join("")}
+                </div>
+              </div>
+            `;
+            detailPanel.classList.remove("hidden");
+            detailPanel.dataset.active = i;
 
-          // Append to container
-          container.appendChild(card);
-          container.appendChild(detail);
+            // Close button handler
+            detailPanel.querySelector(".close-btn").addEventListener("click", () => {
+              detailPanel.classList.add("hidden");
+              detailPanel.innerHTML = "";
+              detailPanel.dataset.active = "";
+            });
+
+            detailPanel.scrollIntoView({ behavior: "smooth" });
+          }
         });
-      });
-  </script>
 
+        grid.appendChild(card);
+      });
+    }
+    loadMembers();
+  </script>
 </body>
 </html>
 
