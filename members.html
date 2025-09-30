@@ -202,46 +202,31 @@
         </div>
     </footer>
 
-    <script>
-        let memberData = {};
+<script>
+    const memberData = {
+        'donggyu': { name: 'Park Dong-gyu (박동규)', role: 'Leader, Main Vocalist', birthdate: 'March 16, 2005', bio: 'Former Pledis trainee with strong leadership.' },
+        'sihwan': { name: 'Kim Si-hwan (김시환)', role: 'Main Dancer', birthdate: 'TBD', bio: 'Charismatic dancer with bright energy.' },
+        'arctic': { name: 'Arctic', role: 'Rapper, Performer', birthdate: 'TBD', bio: 'Edgy rapper with international flair.' },
+        'rensho': { name: 'Rensho', role: 'Vocalist, Visual', birthdate: 'TBD', bio: 'Japanese trainee with quick skills.' },
+        'mystery1': { name: 'Mystery 1', role: 'TBD', birthdate: 'TBD', bio: 'IST’s secret talent.' },
+        'mystery2': { name: 'Mystery 2', role: 'TBD', birthdate: 'TBD', bio: 'Hidden gem awaiting reveal.' },
+        'mystery3': { name: 'Mystery 3', role: 'TBD', birthdate: 'TBD', bio: 'Final puzzle piece.' }
+    };
 
-        // Fetch JSON data with timeout to handle loading
-        fetch('members.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                memberData = data.members.reduce((acc, member) => {
-                    acc[member.id] = member;
-                    return acc;
-                }, {});
-                console.log('Data loaded:', memberData); // Debug log
-            })
-            .catch(error => {
-                const errorDiv = document.getElementById('error-message');
-                errorDiv.textContent = 'Failed to load biodata. Check JSON file or contact support.';
-                console.error('Error loading JSON:', error);
-            });
-
-        function showDetails(memberId) {
-            const detailsSection = document.getElementById('details-section');
-            if (Object.keys(memberData).length === 0) {
-                const errorDiv = document.getElementById('error-message');
-                errorDiv.textContent = 'Biodata loading... Please try again.';
-                return;
-            }
-
-            const member = memberData[memberId];
+    function showDetails(memberId) {
+        const detailsSection = document.getElementById('details-section');
+        const member = memberData[memberId];
+        if (member) {
             document.getElementById('detail-name').textContent = member.name;
             document.getElementById('detail-role').textContent = member.role;
             document.getElementById('detail-birthdate').textContent = member.birthdate;
             document.getElementById('detail-bio').textContent = member.bio;
             detailsSection.classList.add('active');
+        } else {
+            document.getElementById('error-message').textContent = 'Member data not found.';
         }
-    </script>
+    }
+</script>
 </body>
 </html>
 
