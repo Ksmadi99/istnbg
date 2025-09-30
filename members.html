@@ -47,26 +47,43 @@
             font-size: 1.2em;
             margin: 5px 0;
         }
-        .highlight-section {
+        .biodata-section {
             margin-top: 30px;
             padding: 20px;
-            background: #E6E6FA;
+            background: #D8BFD8; /* Deeper lavender */
             border: 2px solid #FF69B4;
             border-radius: 10px;
-            max-width: 800px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        .highlight-section h3 {
+        .biodata-section h3 {
             color: #FF69B4;
             margin-bottom: 15px;
+            text-align: center;
         }
-        .highlight-section p {
-            color: #333333;
+        .biodata-card {
+            background: #FFFFFF;
+            border: 2px solid #008080;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 250px;
+            display: inline-block;
+            vertical-align: top;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .biodata-card h4 {
+            color: #FF69B4;
+            margin: 0 0 10px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 5px;
+        }
+        .biodata-card p {
+            margin: 5px 0;
             line-height: 1.6;
-            margin: 10px 0;
+            color: #333333;
         }
         @media (max-width: 600px) {
             .member-card {
@@ -76,9 +93,15 @@
                 width: 80px;
                 height: 80px;
             }
-            .highlight-section {
+            .biodata-section {
                 padding: 15px;
                 max-width: 300px;
+            }
+            .biodata-card {
+                max-width: 100%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>
@@ -151,9 +174,50 @@
                 <p>TBD</p>
             </a>
         </div>
-        <div class="highlight-section">
-            <h3>Upcoming Highlights</h3>
-            <p>Get ready for exciting updates! Park Donggyu is set to lead a special *Boys II Planet* reunion performance in early 2026, showcasing his vocal prowess. Kim Sihwan is preparing a dance showcase with new choreography, while Arctic and Rensho are teasing a rap-vocal collab. Stay tuned for the mystery members’ reveals as the debut approaches!</p>
+        <div class="biodata-section">
+            <h3>Biodata Overview</h3>
+            <div class="biodata-card">
+                <h4>Park Donggyu 🌳</h4>
+                <p><strong>Role:</strong> Leader, Main Vocalist</p>
+                <p><strong>Birthdate:</strong> [TBD]</p>
+                <p><strong>Bio:</strong> Former Pledis trainee with strong leadership.</p>
+            </div>
+            <div class="biodata-card">
+                <h4>Kim Sihwan 🤗</h4>
+                <p><strong>Role:</strong> Main Dancer</p>
+                <p><strong>Birthdate:</strong> [TBD]</p>
+                <p><strong>Bio:</strong> Charismatic dancer with bright energy.</p>
+            </div>
+            <div class="biodata-card">
+                <h4>Arctic 🐶</h4>
+                <p><strong>Role:</strong> Rapper, Performer</p>
+                <p><strong>Birthdate:</strong> [TBD]</p>
+                <p><strong>Bio:</strong> Edgy rapper with international flair.</p>
+            </div>
+            <div class="biodata-card">
+                <h4>Rensho 👽</h4>
+                <p><strong>Role:</strong> Vocalist, Visual</p>
+                <p><strong>Birthdate:</strong> [TBD]</p>
+                <p><strong>Bio:</strong> Japanese trainee with quick skills.</p>
+            </div>
+            <div class="biodata-card">
+                <h4>Mystery 1 🦊</h4>
+                <p><strong>Role:</strong> TBD</p>
+                <p><strong>Birthdate:</strong> [TBD]</p>
+                <p><strong>Bio:</strong> IST’s secret talent.</p>
+            </div>
+            <div class="biodata-card">
+                <h4>Mystery 2 🦢</h4>
+                <p><strong>Role:</strong> TBD</p>
+                <p><strong>Birthdate:</strong> [TBD]</p>
+                <p><strong>Bio:</strong> Hidden gem awaiting reveal.</p>
+            </div>
+            <div class="biodata-card">
+                <h4>Mystery 3 🔮</h4>
+                <p><strong>Role:</strong> TBD</p>
+                <p><strong>Birthdate:</strong> [TBD]</p>
+                <p><strong>Bio:</strong> Final puzzle piece.</p>
+            </div>
         </div>
     </section>
     
