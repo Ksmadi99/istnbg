@@ -1,153 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 1rem;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IST Future Boys - Members</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .member-card {
+            background: rgba(0, 128, 128, 0.1);
+            border: 2px solid #FF69B4;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .member-card:hover {
+            transform: scale(1.03);
+        }
+        .member-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .member-card .star-seal {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #FF69B4;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            padding: 2px;
+        }
+        .member-card .emoji-row {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-    }
+        /* full-width detail panel under the grid */
+        .details-section {
+            display: none;               /* hidden by default */
+            margin: 30px auto 60px;
+            padding: 20px;
+            background: #D8BFD8;
+            border: 2px solid #FF69B4;
+            border-radius: 10px;
+            max-width: 900px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .details-section.active {
+            display: block;              /* show when active */
+            animation: slideDown 260ms ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .member-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,.1);
-      padding: 1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
+        .details-section h3 {
+            color: #FF69B4;
+            margin: 0 0 12px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 6px;
+        }
+        .details-section p {
+            margin: 6px 0;
+            line-height: 1.6;
+            color: #333333;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .detail-left {
+            text-align: center;
+        }
+        .detail-left img {
+            max-width: 220px;
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .gallery img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
 
-    .member-card:hover {
-      transform: scale(1.05);
-    }
+        .error-message {
+            color: #FF69B4;
+            text-align: center;
+            margin-top: 10px;
+        }
 
-    .member-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .detail-panel {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,.1);
-    }
-
-    .detail-panel.hidden {
-      display: none;
-    }
-
-    .detail-box h2 {
-      margin-top: 0;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-top: .5rem;
-    }
-
-    .gallery img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .close-btn {
-      float: right;
-      background: #ff4d4d;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
+        @media (max-width: 900px) {
+            .details-grid { grid-template-columns: 1fr; }
+            .detail-left img { max-width: 320px; }
+        }
+        @media (max-width: 600px) {
+            .member-card {
+                width: 100px;
+            }
+            .member-card img {
+                width: 80px;
+                height: 80px;
+            }
+            .member-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .details-section { max-width: 360px; padding: 15px; }
+            .gallery img { width: 66px; height: 66px; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Our Members</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="members.html">Members</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="news.html">News</a>
+        <a href="community.html">Community</a>
+        <a href="participants.html">Participants</a>
+    </nav>
 
-  <!-- Grid of members -->
-  <div id="members-grid" class="grid"></div>
+    <header>
+        <h1>Meet the Future Boys</h1>
+        <p>Dive into the profiles of our 7 stars, including <em>Boys Planet II</em> legends!</p>
+    </header>
 
-  <!-- Detail panel below the grid -->
-  <div id="member-detail" class="detail-panel hidden"></div>
+    <section>
+        <h2>Member Profiles</h2>
 
-  <script>
-    async function loadMembers() {
-      const res = await fetch("members.json");
-      const members = await res.json();
-      const grid = document.getElementById("members-grid");
-      const detailPanel = document.getElementById("member-detail");
+        <!-- grid of mini cards (kept static as in your original) -->
+        <div class="member-grid">
+            <div class="member-card" onclick="showDetails('donggyu')">
+                <img src="profileimages/parkdonggyu.jpg" alt="Park Donggyu">
+                <span class="star-seal">🌳</span>
+                <h3>Park Donggyu</h3>
+                <div class="emoji-row">🌳</div>
+                <p>Leader</p>
+            </div>
+            <div class="member-card" onclick="showDetails('sihwan')">
+                <img src="profileimages/kimsihwan.jpg" alt="Kim Sihwan">
+                <span class="star-seal">🤗</span>
+                <h3>Kim Sihwan</h3>
+                <div class="emoji-row">🤗</div>
+                <p>Main Dancer</p>
+            </div>
+            <div class="member-card" onclick="showDetails('arctic')">
+                <img src="profileimages/arctic.jpg" alt="Arctic">
+                <span class="star-seal">🐶</span>
+                <h3>Arctic</h3>
+                <div class="emoji-row">🐶</div>
+                <p>Rapper</p>
+            </div>
+            <div class="member-card" onclick="showDetails('rensho')">
+                <img src="profileimages/rensho.jpg" alt="Rensho">
+                <span class="star-seal">👽</span>
+                <h3>Rensho</h3>
+                <div class="emoji-row">👽</div>
+                <p>Vocalist</p>
+            </div>
+            <div class="member-card" onclick="showDetails('mystery1')">
+                <img src="profileimages/mystery1.jpg" alt="Mystery 1">
+                <span class="star-seal">🦊</span>
+                <h3>Mystery 1</h3>
+                <div class="emoji-row">🦊</div>
+                <p>TBD</p>
+            </div>
+            <div class="member-card" onclick="showDetails('mystery2')">
+                <img src="profileimages/mystery2.jpg" alt="Mystery 2">
+                <span class="star-seal">🦢</span>
+                <h3>Mystery 2</h3>
+                <div class="emoji-row">🦢</div>
+                <p>TBD</p>
+            </div>
+            <div class="member-card" onclick="showDetails('mystery3')">
+                <img src="profileimages/mystery3.jpg" alt="Mystery 3">
+                <span class="star-seal">🔮</span>
+                <h3>Mystery 3</h3>
+                <div class="emoji-row">🔮</div>
+                <p>TBD</p>
+            </div>
+        </div>
 
-      members.forEach((m, i) => {
-        const card = document.createElement("div");
-        card.className = "member-card";
-        card.innerHTML = `
-          <img src="${m.image}" alt="${m.name}">
-          <h3>${m.name}</h3>
-          <p>${m.role}</p>
-        `;
+        <!-- Full-width detail panel (below the grid) -->
+        <div class="details-section" id="details-section" data-active="">
+            <h3 id="detail-name">Click a member to view details</h3>
 
-        card.addEventListener("click", () => {
-          if (detailPanel.dataset.active === i.toString()) {
-            // Close if clicked again
-            detailPanel.classList.add("hidden");
-            detailPanel.innerHTML = "";
-            detailPanel.dataset.active = "";
-          } else {
-            // Open new detail
-            detailPanel.innerHTML = `
-              <button class="close-btn">&times;</button>
-              <div class="detail-box">
-                <h2>${m.name}</h2>
-                <h4>Biodata</h4>
-                <p>${m.biodata}</p>
-                <h4>Participant</h4>
-                <p>${m.participant}</p>
-                <h4>Gallery</h4>
-                <div class="gallery">
-                  ${m.gallery.map(img => `<img src="${img}" />`).join("")}
+            <div class="details-grid">
+                <div class="detail-left">
+                    <img id="detail-photo" src="" alt="" />
+                    <div class="gallery" id="detail-gallery" style="display:none;"></div>
                 </div>
-              </div>
-            `;
-            detailPanel.classList.remove("hidden");
-            detailPanel.dataset.active = i;
 
-            // Close button handler
-            detailPanel.querySelector(".close-btn").addEventListener("click", () => {
-              detailPanel.classList.add("hidden");
-              detailPanel.innerHTML = "";
-              detailPanel.dataset.active = "";
+                <div class="detail-right">
+                    <p><strong>Emoji:</strong> <span id="detail-emoji">—</span></p>
+                    <p><strong>Birthdate:</strong> <span id="detail-birthdate">—</span></p>
+                    <p><strong>Birthplace:</strong> <span id="detail-birthplace">—</span></p>
+                    <p><strong>Height:</strong> <span id="detail-height">—</span></p>
+                    <p><strong>Weight:</strong> <span id="detail-weight">—</span></p>
+                    <p><strong>Blood Type:</strong> <span id="detail-blood">—</span></p>
+                    <p><strong>MBTI:</strong> <span id="detail-mbti">—</span></p>
+                    <p><strong>Nationality:</strong> <span id="detail-nationality">—</span></p>
+                    <p><strong>Education:</strong> <span id="detail-education">—</span></p>
+                    <p><strong>Trainee Period:</strong> <span id="detail-trainee">—</span></p>
+
+                    <h4 style="margin-top:12px;">Participation</h4>
+                    <p><strong>Show:</strong> <span id="detail-show">—</span></p>
+                    <p><strong>Rank:</strong> <span id="detail-rank">—</span></p>
+                    <p><strong>Notable Performance:</strong> <span id="detail-notable">—</span></p>
+
+                    <h4 style="margin-top:12px;">X Profile</h4>
+                    <p id="detail-xprofile">—</p>
+                </div>
+            </div>
+
+            <div id="error-message" class="error-message"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <p>Unofficial Fan Site | Made with ❤️ for IST Future Boys</p>
+            <p>Debut: Q1 2026 | Images via Kpopping & Fandom</p>
+        </div>
+        <div class="footer-section">
+            <p>Follow IST Entertainment:</p>
+            <p>
+                <a href="https://twitter.com/ist_entertainment" target="_blank" title="Twitter">🐦</a>
+                <a href="https://www.instagram.com/ist_entertainment/" target="_blank" title="Instagram">📸</a>
+                <a href="https://www.facebook.com/ist.entertainment" target="_blank" title="Facebook">👍</a>
+            </p>
+        </div>
+        <div class="footer-section">
+            <p>Contact IST Entertainment:</p>
+            <p>Business: <a href="mailto:istent_business@istent.co.kr">istent_business@istent.co.kr</a></p>
+            <p>Fan Staff: <a href="mailto:istent_fanstaff@istent.co.kr">istent_fanstaff@istent.co.kr</a></p>
+            <p>Audition Apply: <a href="mailto:audition@istent.co.kr">audition@istent.co.kr</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Map to store loaded JSON members by id
+        let memberData = {};
+
+        // Load JSON file and build map
+        fetch('members.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => {
+                // data.members expected (your posted JSON has { "members": [ ... ] })
+                if (!data || !Array.isArray(data.members)) {
+                    throw new Error('members.json format error: expected "members" array');
+                }
+                data.members.forEach(member => {
+                    memberData[member.id] = member;
+                });
+                // Clear any previous error
+                const err = document.getElementById('error-message');
+                if (err) err.textContent = '';
+            })
+            .catch(error => {
+                console.error('Error loading members.json:', error);
+                const errorDiv = document.getElementById('error-message');
+                if (errorDiv) errorDiv.textContent = 'Failed to load biodata. Check members.json or network.';
             });
 
-            detailPanel.scrollIntoView({ behavior: "smooth" });
-          }
-        });
+        // Toggle/show details for a member id
+        function showDetails(memberId) {
+            const detailsSection = document.getElementById('details-section');
+            const errorDiv = document.getElementById('error-message');
 
-        grid.appendChild(card);
-      });
-    }
-    loadMembers();
-  </script>
+            // If JSON hasn't loaded yet
+            if (!memberData || Object.keys(memberData).length === 0) {
+                if (errorDiv) errorDiv.textContent = 'Biodata loading... Please try again in a moment.';
+                return;
+            }
+
+            // If same member clicked -> close panel
+            if (detailsSection.dataset.active === memberId) {
+                detailsSection.classList.remove('active');
+                detailsSection.dataset.active = '';
+                // optional: scroll back slightly to keep grid in view
+                window.scrollTo({ top: document.querySelector('.member-grid').offsetTop - 10, behavior: 'smooth' });
+                return;
+            }
+
+            const m = memberData[memberId];
+            if (!m) {
+                if (errorDiv) errorDiv.textContent = 'Member data not found.';
+                return;
+            }
+
+            // Populate detail fields (use fallbacks if fields missing)
+            document.getElementById('detail-name').textContent = (m.stage_name || m.birth_name || 'Unknown') + (m.emoji ? ' ' + m.emoji : '');
+            document.getElementById('detail-emoji').textContent = m.emoji || '—';
+            document.getElementById('detail-birthdate').textContent = m.birthdate || 'TBD';
+            document.getElementById('detail-birthplace').textContent = m.birthplace || 'TBD';
+            document.getElementById('detail-height').textContent = m.height || 'TBD';
+            document.getElementById('detail-weight').textContent = m.weight || 'TBD';
+            document.getElementById('detail-blood').textContent = m.blood_type || 'TBD';
+            document.getElementById('detail-mbti').textContent = m.mbti_type || 'TBD';
+            document.getElementById('detail-nationality').textContent = m.nationality || 'TBD';
+            document.getElementById('detail-education').textContent = m.education || 'TBD';
+            document.getElementById('detail-trainee').textContent = m.trainee_period || 'TBD';
+
+            // participation block
+            const part = m.participation || {};
+            document.getElementById('detail-show').textContent = part.show || 'TBD';
+            document.getElementById('detail-rank').textContent = part.rank || 'TBD';
+            document.getElementById('detail-notable').textContent = part.notable_performance || 'TBD';
+
+            // X profile
+            const xp = m.x_profile || {};
+            if (xp.username) {
+                const uname = xp.username.replace(/^@/, '');
+                document.getElementById('detail-xprofile').innerHTML =
+                  `<strong>${xp.username}</strong> — ${xp.bio || ''} <br>
+                   Followers: ${xp.followers_count || 'TBD'} • Following: ${xp.following_count || 'TBD'}`;
+            } else {
+                document.getElementById('detail-xprofile').textContent = xp.bio || 'TBD';
+            }
+
+            // photo: try to use profileimages/<id>.jpg as fallback if json doesn't provide photo path
+            const photoEl = document.getElementById('detail-photo');
+            if (m.image) {
+                photoEl.src = m.image;
+                photoEl.alt = m.stage_name || 'photo';
+            } else {
+                // fallback to profileimages/<id>.jpg (matches your grid images)
+                photoEl.src = `profileimages/${memberId}.jpg`;
+                photoEl.alt = m.stage_name || 'photo';
+            }
+
+            // gallery (optional)
+            const galleryEl = document.getElementById('detail-gallery');
+            if (Array.isArray(m.gallery) && m.gallery.length > 0) {
+                galleryEl.innerHTML = m.gallery.map(g => `<img src="${g}" alt="${m.stage_name || 'img'}">`).join('');
+                galleryEl.style.display = 'flex';
+            } else {
+                galleryEl.innerHTML = '';
+                galleryEl.style.display = 'none';
+            }
+
+            // show panel and mark active
+            detailsSection.classList.add('active');
+            detailsSection.dataset.active = memberId;
+            if (errorDiv) errorDiv.textContent = '';
+
+            // scroll to details panel smoothly
+            setTimeout(() => {
+                detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 70);
+        }
+    </script>
 </body>
 </html>
+
 
 
