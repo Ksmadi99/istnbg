@@ -205,7 +205,7 @@
     <script>
         let memberData = {};
 
-        // Fetch JSON data
+        // Fetch JSON data with timeout to handle loading
         fetch('members.json')
             .then(response => {
                 if (!response.ok) {
@@ -218,17 +218,20 @@
                     acc[member.id] = member;
                     return acc;
                 }, {});
+                console.log('Data loaded:', memberData); // Debug log
             })
             .catch(error => {
                 const errorDiv = document.getElementById('error-message');
-                errorDiv.textContent = 'Failed to load biodata. Please check back later or contact support.';
+                errorDiv.textContent = 'Failed to load biodata. Check JSON file or contact support.';
                 console.error('Error loading JSON:', error);
             });
 
         function showDetails(memberId) {
             const detailsSection = document.getElementById('details-section');
             if (Object.keys(memberData).length === 0) {
-                return; // Wait for data to load
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = 'Biodata loading... Please try again.';
+                return;
             }
 
             const member = memberData[memberId];
