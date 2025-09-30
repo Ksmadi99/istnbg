@@ -1,232 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IST Future Boys - Members</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .member-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .member-card {
-            background: rgba(0, 128, 128, 0.1);
-            border: 2px solid #FF69B4;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        .member-card:hover {
-            transform: scale(1.03);
-        }
-        .member-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .member-card .star-seal {
-            position: absolute;
-            top: 5px;
-            right: 15px;
-            font-size: 1.5em;
-            color: #FF69B4;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            padding: 2px;
-        }
-        .member-card .emoji-row {
-            font-size: 1.2em;
-            margin: 5px 0;
-        }
-        .details-section {
-            display: none;
-            margin-top: 30px;
-            padding: 20px;
-            background: #D8BFD8;
-            border: 2px solid #FF69B4;
-            border-radius: 10px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        .details-section.active {
-            display: block;
-        }
-        .details-section h3 {
-            color: #FF69B4;
-            margin: 0 0 15px;
-            border-bottom: 2px solid #008080;
-            padding-bottom: 5px;
-        }
-        .details-section p {
-            margin: 5px 0;
-            line-height: 1.6;
-            color: #333333;
-        }
-        .error-message {
-            color: #FF69B4;
-            text-align: center;
-            margin-top: 10px;
-        }
-        @media (max-width: 600px) {
-            .member-card {
-                width: 100px;
-            }
-            .member-card img {
-                width: 80px;
-                height: 80px;
-            }
-            .member-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            }
-            .details-section {
-                max-width: 300px;
-                padding: 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IST Future Boys - Members</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .members-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px;
+    }
+    .card {
+      width: 180px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+      background: #f9f9f9;
+      margin: 10px auto;
+      padding: 0 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .details.active {
+      max-height: 1000px;
+      padding: 15px;
+    }
+    .details h3 {
+      margin-top: 0;
+      color: #FF69B4;
+    }
+    .section {
+      margin-bottom: 15px;
+    }
+    .gallery img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin: 5px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="members.html">Members</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="news.html">News</a>
-        <a href="community.html">Community</a>
-        <a href="participants.html">Participants</a>
-    </nav>
-    
-    <header>
-        <h1>Meet the Future Boys</h1>
-        <p>Dive into the profiles of our 7 stars, including *Boys Planet II* legends!</p>
-    </header>
-    
-    <section>
-        <h2>Member Profiles</h2>
-        <div class="member-grid">
-            <div class="member-card" onclick="showDetails('donggyu')">
-                <img src="profileimages/parkdonggyu.jpg" alt="Park Donggyu">
-                <span class="star-seal">🌳</span>
-                <h3>Park Donggyu</h3>
-                <div class="emoji-row">🌳</div>
-                <p>Leader</p>
-            </div>
-            <div class="member-card" onclick="showDetails('sihwan')">
-                <img src="profileimages/kimsihwan.jpg" alt="Kim Sihwan">
-                <span class="star-seal">🤗</span>
-                <h3>Kim Sihwan</h3>
-                <div class="emoji-row">🤗</div>
-                <p>Main Dancer</p>
-            </div>
-            <div class="member-card" onclick="showDetails('arctic')">
-                <img src="profileimages/arctic.jpg" alt="Arctic">
-                <span class="star-seal">🐶</span>
-                <h3>Arctic</h3>
-                <div class="emoji-row">🐶</div>
-                <p>Rapper</p>
-            </div>
-            <div class="member-card" onclick="showDetails('rensho')">
-                <img src="profileimages/rensho.jpg" alt="Rensho">
-                <span class="star-seal">👽</span>
-                <h3>Rensho</h3>
-                <div class="emoji-row">👽</div>
-                <p>Vocalist</p>
-            </div>
-            <div class="member-card" onclick="showDetails('mystery1')">
-                <img src="profileimages/mystery1.jpg" alt="Mystery 1">
-                <span class="star-seal">🦊</span>
-                <h3>Mystery 1</h3>
-                <div class="emoji-row">🦊</div>
-                <p>TBD</p>
-            </div>
-            <div class="member-card" onclick="showDetails('mystery2')">
-                <img src="profileimages/mystery2.jpg" alt="Mystery 2">
-                <span class="star-seal">🦢</span>
-                <h3>Mystery 2</h3>
-                <div class="emoji-row">🦢</div>
-                <p>TBD</p>
-            </div>
-            <div class="member-card" onclick="showDetails('mystery3')">
-                <img src="profileimages/mystery3.jpg" alt="Mystery 3">
-                <span class="star-seal">🔮</span>
-                <h3>Mystery 3</h3>
-                <div class="emoji-row">🔮</div>
-                <p>TBD</p>
-            </div>
-        </div>
-        <div class="details-section" id="details-section">
-            <h3 id="detail-name"></h3>
-            <p><strong>Role:</strong> <span id="detail-role"></span></p>
-            <p><strong>Birthdate:</strong> <span id="detail-birthdate"></span></p>
-            <p><strong>Bio:</strong> <span id="detail-bio"></span></p>
-            <div id="error-message" class="error-message"></div>
-        </div>
-    </section>
-    
-    <footer class="footer">
-        <div class="footer-section">
-            <p>Unofficial Fan Site | Made with ❤️ for IST Future Boys</p>
-            <p>Debut: Q1 2026 | Images via Kpopping & Fandom</p>
-        </div>
-        <div class="footer-section">
-            <p>Follow IST Entertainment:</p>
-            <p>
-                <a href="https://twitter.com/ist_entertainment" target="_blank" title="Twitter">🐦</a>
-                <a href="https://www.instagram.com/ist_entertainment/" target="_blank" title="Instagram">📸</a>
-                <a href="https://www.facebook.com/ist.entertainment" target="_blank" title="Facebook">👍</a>
-            </p>
-        </div>
-        <div class="footer-section">
-            <p>Contact IST Entertainment:</p>
-            <p>Business: <a href="mailto:istent_business@istent.co.kr">istent_business@istent.co.kr</a></p>
-            <p>Fan Staff: <a href="mailto:istent_fanstaff@istent.co.kr">istent_fanstaff@istent.co.kr</a></p>
-            <p>Audition Apply: <a href="mailto:audition@istent.co.kr">audition@istent.co.kr</a></p>
-            <p>Audition Inquiry:</p>
-            <p>
-                <a href="https://twitter.com/istent_audition" target="_blank" title="Twitter">🐦</a>
-                <a href="https://www.instagram.com/istent_audition/" target="_blank" title="Instagram">📸</a>
-                <a href="https://www.facebook.com/istent.audition" target="_blank" title="Facebook">👍</a>
-            </p>
-        </div>
-    </footer>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="members.html">Members</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="news.html">News</a>
+    <a href="community.html">Community</a>
+    <a href="participants.html">Participants</a>
+  </nav>
 
-<script>
-    const memberData = {
-        'donggyu': { name: 'Park Dong-gyu (박동규)', role: 'Leader, Main Vocalist', birthdate: 'March 16, 2005', bio: 'Former Pledis trainee with strong leadership.' },
-        'sihwan': { name: 'Kim Si-hwan (김시환)', role: 'Main Dancer', birthdate: 'TBD', bio: 'Charismatic dancer with bright energy.' },
-        'arctic': { name: 'Arctic', role: 'Rapper, Performer', birthdate: 'TBD', bio: 'Edgy rapper with international flair.' },
-        'rensho': { name: 'Rensho', role: 'Vocalist, Visual', birthdate: 'TBD', bio: 'Japanese trainee with quick skills.' },
-        'mystery1': { name: 'Mystery 1', role: 'TBD', birthdate: 'TBD', bio: 'IST’s secret talent.' },
-        'mystery2': { name: 'Mystery 2', role: 'TBD', birthdate: 'TBD', bio: 'Hidden gem awaiting reveal.' },
-        'mystery3': { name: 'Mystery 3', role: 'TBD', birthdate: 'TBD', bio: 'Final puzzle piece.' }
-    };
+  <header>
+    <h1>Meet the Members</h1>
+    <p>Click a member card to see their details!</p>
+  </header>
 
-    function showDetails(memberId) {
-        const detailsSection = document.getElementById('details-section');
-        const member = memberData[memberId];
-        if (member) {
-            document.getElementById('detail-name').textContent = member.name;
-            document.getElementById('detail-role').textContent = member.role;
-            document.getElementById('detail-birthdate').textContent = member.birthdate;
-            document.getElementById('detail-bio').textContent = member.bio;
-            detailsSection.classList.add('active');
-        } else {
-            document.getElementById('error-message').textContent = 'Member data not found.';
-        }
+  <div id="members-container" class="members-container"></div>
+
+  <script>
+    // Load JSON
+    fetch('members.json')
+      .then(res => res.json())
+      .then(members => {
+        const container = document.getElementById('members-container');
+        members.forEach(m => {
+          // Create card
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${m.image}" alt="${m.name}">
+            <h3>${m.name}</h3>
+            <p>${m.emoji} ${m.role}</p>
+          `;
+          card.onclick = () => toggleDetails(m.id);
+
+          // Create details
+          const details = document.createElement('div');
+          details.id = m.id;
+          details.className = 'details';
+          details.innerHTML = `
+            <div class="section">
+              <h3>Biodata</h3>
+              <p>
+                ${Object.entries(m.biodata).map(([k,v]) => `${k}: ${v}`).join('<br>')}
+              </p>
+            </div>
+            <div class="section">
+              <h3>Participant</h3>
+              <p>${m.participant}</p>
+            </div>
+            <div class="section gallery">
+              <h3>Gallery</h3>
+              ${m.gallery.map(g => `<img src="${g}" alt="${m.name} photo">`).join('')}
+            </div>
+          `;
+
+          container.appendChild(card);
+          container.appendChild(details);
+        });
+      });
+
+    function toggleDetails(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('active');
     }
-</script>
+  </script>
 </body>
 </html>
+
 
