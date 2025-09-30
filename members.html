@@ -49,29 +49,36 @@
             font-size: 1.2em;
             margin: 5px 0;
         }
-        .detail-card {
+        .details-section {
             display: none;
+            margin-top: 30px;
+            padding: 20px;
             background: #D8BFD8;
             border: 2px solid #FF69B4;
             border-radius: 10px;
-            padding: 15px;
-            margin-top: 10px;
-            text-align: left;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        .detail-card h4 {
+        .details-section.active {
+            display: block;
+        }
+        .details-section h3 {
             color: #FF69B4;
-            margin: 0 0 10px;
+            margin: 0 0 15px;
             border-bottom: 2px solid #008080;
             padding-bottom: 5px;
         }
-        .detail-card p {
+        .details-section p {
             margin: 5px 0;
             line-height: 1.6;
             color: #333333;
         }
-        .active .detail-card {
-            display: block;
+        .error-message {
+            color: #FF69B4;
+            text-align: center;
+            margin-top: 10px;
         }
         @media (max-width: 600px) {
             .member-card {
@@ -84,8 +91,9 @@
             .member-grid {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
-            .detail-card {
-                padding: 10px;
+            .details-section {
+                max-width: 300px;
+                padding: 15px;
             }
         }
     </style>
@@ -108,97 +116,62 @@
     <section>
         <h2>Member Profiles</h2>
         <div class="member-grid">
-            <div class="member-card" onclick="toggleDetails(this)">
+            <div class="member-card" onclick="showDetails('donggyu')">
                 <img src="profileimages/parkdonggyu.jpg" alt="Park Donggyu">
                 <span class="star-seal">🌳</span>
                 <h3>Park Donggyu</h3>
                 <div class="emoji-row">🌳</div>
                 <p>Leader</p>
-                <div class="detail-card">
-                    <h4>Biodata</h4>
-                    <p><strong>Role:</strong> Leader, Main Vocalist</p>
-                    <p><strong>Birthdate:</strong> [TBD]</p>
-                    <p><strong>Bio:</strong> Former Pledis trainee with strong leadership.</p>
-                </div>
             </div>
-            <div class="member-card" onclick="toggleDetails(this)">
+            <div class="member-card" onclick="showDetails('sihwan')">
                 <img src="profileimages/kimsihwan.jpg" alt="Kim Sihwan">
                 <span class="star-seal">🤗</span>
                 <h3>Kim Sihwan</h3>
                 <div class="emoji-row">🤗</div>
                 <p>Main Dancer</p>
-                <div class="detail-card">
-                    <h4>Biodata</h4>
-                    <p><strong>Role:</strong> Main Dancer</p>
-                    <p><strong>Birthdate:</strong> [TBD]</p>
-                    <p><strong>Bio:</strong> Charismatic dancer with bright energy.</p>
-                </div>
             </div>
-            <div class="member-card" onclick="toggleDetails(this)">
+            <div class="member-card" onclick="showDetails('arctic')">
                 <img src="profileimages/arctic.jpg" alt="Arctic">
                 <span class="star-seal">🐶</span>
                 <h3>Arctic</h3>
                 <div class="emoji-row">🐶</div>
                 <p>Rapper</p>
-                <div class="detail-card">
-                    <h4>Biodata</h4>
-                    <p><strong>Role:</strong> Rapper, Performer</p>
-                    <p><strong>Birthdate:</strong> [TBD]</p>
-                    <p><strong>Bio:</strong> Edgy rapper with international flair.</p>
-                </div>
             </div>
-            <div class="member-card" onclick="toggleDetails(this)">
+            <div class="member-card" onclick="showDetails('rensho')">
                 <img src="profileimages/rensho.jpg" alt="Rensho">
                 <span class="star-seal">👽</span>
                 <h3>Rensho</h3>
                 <div class="emoji-row">👽</div>
                 <p>Vocalist</p>
-                <div class="detail-card">
-                    <h4>Biodata</h4>
-                    <p><strong>Role:</strong> Vocalist, Visual</p>
-                    <p><strong>Birthdate:</strong> [TBD]</p>
-                    <p><strong>Bio:</strong> Japanese trainee with quick skills.</p>
-                </div>
             </div>
-            <div class="member-card" onclick="toggleDetails(this)">
+            <div class="member-card" onclick="showDetails('mystery1')">
                 <img src="profileimages/mystery1.jpg" alt="Mystery 1">
                 <span class="star-seal">🦊</span>
                 <h3>Mystery 1</h3>
                 <div class="emoji-row">🦊</div>
                 <p>TBD</p>
-                <div class="detail-card">
-                    <h4>Biodata</h4>
-                    <p><strong>Role:</strong> TBD</p>
-                    <p><strong>Birthdate:</strong> [TBD]</p>
-                    <p><strong>Bio:</strong> IST’s secret talent.</p>
-                </div>
             </div>
-            <div class="member-card" onclick="toggleDetails(this)">
+            <div class="member-card" onclick="showDetails('mystery2')">
                 <img src="profileimages/mystery2.jpg" alt="Mystery 2">
                 <span class="star-seal">🦢</span>
                 <h3>Mystery 2</h3>
                 <div class="emoji-row">🦢</div>
                 <p>TBD</p>
-                <div class="detail-card">
-                    <h4>Biodata</h4>
-                    <p><strong>Role:</strong> TBD</p>
-                    <p><strong>Birthdate:</strong> [TBD]</p>
-                    <p><strong>Bio:</strong> Hidden gem awaiting reveal.</p>
-                </div>
             </div>
-            <div class="member-card" onclick="toggleDetails(this)">
+            <div class="member-card" onclick="showDetails('mystery3')">
                 <img src="profileimages/mystery3.jpg" alt="Mystery 3">
                 <span class="star-seal">🔮</span>
                 <h3>Mystery 3</h3>
                 <div class="emoji-row">🔮</div>
                 <p>TBD</p>
-                <div class="detail-card">
-                    <h4>Biodata</h4>
-                    <p><strong>Role:</strong> TBD</p>
-                    <p><strong>Birthdate:</strong> [TBD]</p>
-                    <p><strong>Bio:</strong> Final puzzle piece.</p>
-                </div>
             </div>
+        </div>
+        <div class="details-section" id="details-section">
+            <h3 id="detail-name"></h3>
+            <p><strong>Role:</strong> <span id="detail-role"></span></p>
+            <p><strong>Birthdate:</strong> <span id="detail-birthdate"></span></p>
+            <p><strong>Bio:</strong> <span id="detail-bio"></span></p>
+            <div id="error-message" class="error-message"></div>
         </div>
     </section>
     
@@ -230,14 +203,40 @@
     </footer>
 
     <script>
-        function toggleDetails(card) {
-            card.classList.toggle('active');
-            const details = card.querySelector('.detail-card');
-            if (card.classList.contains('active')) {
-                details.style.display = 'block';
-            } else {
-                details.style.display = 'none';
+        let memberData = {};
+
+        // Fetch JSON data
+        fetch('members.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                memberData = data.members.reduce((acc, member) => {
+                    acc[member.id] = member;
+                    return acc;
+                }, {});
+            })
+            .catch(error => {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = 'Failed to load biodata. Please check back later or contact support.';
+                console.error('Error loading JSON:', error);
+            });
+
+        function showDetails(memberId) {
+            const detailsSection = document.getElementById('details-section');
+            if (Object.keys(memberData).length === 0) {
+                return; // Wait for data to load
             }
+
+            const member = memberData[memberId];
+            document.getElementById('detail-name').textContent = member.name;
+            document.getElementById('detail-role').textContent = member.role;
+            document.getElementById('detail-birthdate').textContent = member.birthdate;
+            document.getElementById('detail-bio').textContent = member.bio;
+            detailsSection.classList.add('active');
         }
     </script>
 </body>
