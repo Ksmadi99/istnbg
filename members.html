@@ -47,35 +47,6 @@
             font-size: 1.2em;
             margin: 5px 0;
         }
-        .member-info {
-            display: none;
-            padding: 20px;
-            background: #E6E6FA;
-            border: 2px solid #FF69B4;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            margin: 20px auto;
-            max-width: 500px;
-            text-align: center;
-        }
-        .info-card {
-            background: white;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #008080;
-            border-radius: 5px;
-        }
-        .info-card h4 {
-            margin: 0;
-            color: #FF69B4;
-            font-size: 1.2em;
-            border-bottom: 1px solid #008080;
-            padding-bottom: 5px;
-        }
-        .info-card p {
-            margin: 5px 0;
-            line-height: 1.5;
-        }
         @media (max-width: 600px) {
             .member-card {
                 width: 100px;
@@ -83,9 +54,6 @@
             .member-card img {
                 width: 80px;
                 height: 80px;
-            }
-            .member-info {
-                max-width: 300px;
             }
         }
     </style>
@@ -108,181 +76,55 @@
     <section>
         <h2>Member Profiles</h2>
         <div class="member-grid">
-            <div class="member-card" onclick="showInfo('donggyu')" ondblclick="hideInfo('donggyu')">
+            <a href="parkdonggyu.html" class="member-card">
                 <img src="profileimages/parkdonggyu.jpg" alt="Park Donggyu">
                 <span class="star-seal">🌳</span>
                 <h3>Park Donggyu</h3>
                 <div class="emoji-row">🌳</div>
                 <p>Leader</p>
-            </div>
-            <div class="member-card" onclick="showInfo('sihwan')" ondblclick="hideInfo('sihwan')">
+            </a>
+            <a href="kimsihwan.html" class="member-card">
                 <img src="profileimages/kimsihwan.jpg" alt="Kim Sihwan">
                 <span class="star-seal">🤗</span>
                 <h3>Kim Sihwan</h3>
                 <div class="emoji-row">🤗</div>
                 <p>Main Dancer</p>
-            </div>
-            <div class="member-card" onclick="showInfo('arctic')" ondblclick="hideInfo('arctic')">
+            </a>
+            <a href="arctic.html" class="member-card">
                 <img src="profileimages/arctic.jpg" alt="Arctic">
                 <span class="star-seal">🐶</span>
                 <h3>Arctic</h3>
                 <div class="emoji-row">🐶</div>
                 <p>Rapper</p>
-            </div>
-            <div class="member-card" onclick="showInfo('rensho')" ondblclick="hideInfo('rensho')">
+            </a>
+            <a href="rensho.html" class="member-card">
                 <img src="profileimages/rensho.jpg" alt="Rensho">
                 <span class="star-seal">👽</span>
                 <h3>Rensho</h3>
                 <div class="emoji-row">👽</div>
                 <p>Vocalist</p>
-            </div>
-            <div class="member-card" onclick="showInfo('mystery1')" ondblclick="hideInfo('mystery1')">
+            </a>
+            <a href="mystery1.html" class="member-card">
                 <img src="profileimages/mystery1.jpg" alt="Mystery 1">
                 <span class="star-seal">🦊</span>
                 <h3>Mystery 1</h3>
                 <div class="emoji-row">🦊</div>
                 <p>TBD</p>
-            </div>
-            <div class="member-card" onclick="showInfo('mystery2')" ondblclick="hideInfo('mystery2')">
+            </a>
+            <a href="mystery2.html" class="member-card">
                 <img src="profileimages/mystery2.jpg" alt="Mystery 2">
                 <span class="star-seal">🦢</span>
                 <h3>Mystery 2</h3>
                 <div class="emoji-row">🦢</div>
                 <p>TBD</p>
-            </div>
-            <div class="member-card" onclick="showInfo('mystery3')" ondblclick="hideInfo('mystery3')">
+            </a>
+            <a href="mystery3.html" class="member-card">
                 <img src="profileimages/mystery3.jpg" alt="Mystery 3">
                 <span class="star-seal">🔮</span>
                 <h3>Mystery 3</h3>
                 <div class="emoji-row">🔮</div>
                 <p>TBD</p>
-            </div>
-        </div>
-        <div id="donggyu-info" class="member-info">
-            <div class="info-card">
-                <h4>Role</h4>
-                <p>Leader, Main Vocalist</p>
-            </div>
-            <div class="info-card">
-                <h4>Boys II Planet</h4>
-                <p>Ranked 15th, led Team 777 in "Lucky Macho"</p>
-            </div>
-            <div class="info-card">
-                <h4>Bio</h4>
-                <p>Former Pledis trainee, known for powerful vocals and leadership.</p>
-            </div>
-            <div class="info-card">
-                <h4>Fun Fact</h4>
-                <p>Loves spicy ramen.</p>
-            </div>
-        </div>
-        <div id="sihwan-info" class="member-info">
-            <div class="info-card">
-                <h4>Role</h4>
-                <p>Main Dancer</p>
-            </div>
-            <div class="info-card">
-                <h4>Boys II Planet</h4>
-                <p>Eliminated Ep. 8 (48th), shone in "Hola Solar"</p>
-            </div>
-            <div class="info-card">
-                <h4>Bio</h4>
-                <p>Charismatic dancer with a bright stage presence.</p>
-            </div>
-            <div class="info-card">
-                <h4>Fun Fact</h4>
-                <p>Obsessed with street fashion.</p>
-            </div>
-        </div>
-        <div id="arctic-info" class="member-info">
-            <div class="info-card">
-                <h4>Role</h4>
-                <p>Rapper, Performer</p>
-            </div>
-            <div class="info-card">
-                <h4>Boys II Planet</h4>
-                <p>Early eliminator, rocked "Misfit" (NCT U cover)</p>
-            </div>
-            <div class="info-card">
-                <h4>Bio</h4>
-                <p>Edgy vibe, international flair, and killer stage energy.</p>
-            </div>
-            <div class="info-card">
-                <h4>Fun Fact</h4>
-                <p>Loves gaming late at night.</p>
-            </div>
-        </div>
-        <div id="rensho-info" class="member-info">
-            <div class="info-card">
-                <h4>Role</h4>
-                <p>Vocalist, Visual</p>
-            </div>
-            <div class="info-card">
-                <h4>Boys II Planet</h4>
-                <p>Eliminated Ep. 5 (68th), sparkled in "Hola Solar"</p>
-            </div>
-            <div class="info-card">
-                <h4>Bio</h4>
-                <p>Japanese trainee with quick learning skills.</p>
-            </div>
-            <div class="info-card">
-                <h4>Fun Fact</h4>
-                <p>Dreams of acting in a K-drama.</p>
-            </div>
-        </div>
-        <div id="mystery1-info" class="member-info">
-            <div class="info-card">
-                <h4>Role</h4>
-                <p>TBD</p>
-            </div>
-            <div class="info-card">
-                <h4>Boys II Planet</h4>
-                <p>Unknown</p>
-            </div>
-            <div class="info-card">
-                <h4>Bio</h4>
-                <p>IST’s secret weapon – who could it be?</p>
-            </div>
-            <div class="info-card">
-                <h4>Fun Fact</h4>
-                <p>Stay tuned for 2026 reveal!</p>
-            </div>
-        </div>
-        <div id="mystery2-info" class="member-info">
-            <div class="info-card">
-                <h4>Role</h4>
-                <p>TBD</p>
-            </div>
-            <div class="info-card">
-                <h4>Boys II Planet</h4>
-                <p>Unknown</p>
-            </div>
-            <div class="info-card">
-                <h4>Bio</h4>
-                <p>Another hidden gem from IST’s training.</p>
-            </div>
-            <div class="info-card">
-                <h4>Fun Fact</h4>
-                <p>Fans guess a dancer!</p>
-            </div>
-        </div>
-        <div id="mystery3-info" class="member-info">
-            <div class="info-card">
-                <h4>Role</h4>
-                <p>TBD</p>
-            </div>
-            <div class="info-card">
-                <h4>Boys II Planet</h4>
-                <p>Unknown</p>
-            </div>
-            <div class="info-card">
-                <h4>Bio</h4>
-                <p>The final piece of the 7-star puzzle.</p>
-            </div>
-            <div class="info-card">
-                <h4>Fun Fact</h4>
-                <p>Rumored rapper?</p>
-            </div>
+            </a>
         </div>
     </section>
     
@@ -312,14 +154,5 @@
             </p>
         </div>
     </footer>
-
-    <script>
-        function showInfo(memberId) {
-            document.getElementById(memberId + '-info').style.display = 'block';
-        }
-        function hideInfo(memberId) {
-            document.getElementById(memberId + '-info').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
