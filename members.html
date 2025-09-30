@@ -31,7 +31,7 @@
     .details {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.6s ease;
+      transition: max-height 0.6s ease, padding 0.3s;
       background: #f9f9f9;
       margin: 10px auto;
       padding: 0 15px;
@@ -49,12 +49,8 @@
     .section {
       margin-bottom: 15px;
     }
-    .gallery img {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      margin: 5px;
-      object-fit: cover;
+    .section p {
+      margin: 5px 0;
     }
   </style>
 </head>
@@ -76,40 +72,58 @@
   <div id="members-container" class="members-container"></div>
 
   <script>
-    // Load JSON
     fetch('members.json')
       .then(res => res.json())
-      .then(members => {
+      .then(data => {
+        const members = data.members;
         const container = document.getElementById('members-container');
+
         members.forEach(m => {
-          // Create card
+          // card
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
-            <img src="${m.image}" alt="${m.name}">
-            <h3>${m.name}</h3>
-            <p>${m.emoji} ${m.role}</p>
+            <img src="profileimages/${m.id}.jpg" alt="${m.stage_name}">
+            <h3>${m.stage_name}</h3>
+            <p>${m.emoji}</p>
           `;
           card.onclick = () => toggleDetails(m.id);
 
-          // Create details
+          // details
           const details = document.createElement('div');
           details.id = m.id;
           details.className = 'details';
           details.innerHTML = `
             <div class="section">
               <h3>Biodata</h3>
-              <p>
-                ${Object.entries(m.biodata).map(([k,v]) => `${k}: ${v}`).join('<br>')}
-              </p>
+              <p><strong>Birth Name:</strong> ${m.birth_name}</p>
+              <p><strong>Birthdate:</strong> ${m.birthdate}</p>
+              <p><strong>Birthplace:</strong> ${m.birthplace}</p>
+              <p><strong>Height:</strong> ${m.height}</p>
+              <p><strong>Weight:</strong> ${m.weight}</p>
+              <p><strong>Blood Type:</strong> ${m.blood_type}</p>
+              <p><strong>MBTI:</strong> ${m.mbti_type}</p>
+              <p><strong>Nationality:</strong> ${m.nationality}</p>
+              <p><strong>Education:</strong> ${m.education}</p>
             </div>
             <div class="section">
-              <h3>Participant</h3>
-              <p>${m.participant}</p>
+              <h3>Trainee Info</h3>
+              <p>${m.trainee_period}</p>
             </div>
-            <div class="section gallery">
-              <h3>Gallery</h3>
-              ${m.gallery.map(g => `<img src="${g}" alt="${m.name} photo">`).join('')}
+            <div class="section">
+              <h3>X (Twitter) Profile</h3>
+              <p><strong>Username:</strong> <a href="https://x.com/${m.x_profile.username.replace('@','')}" target="_blank">${m.x_profile.username}</a></p>
+              <p><strong>Bio:</strong> ${m.x_profile.bio}</p>
+              <p><strong>Followers:</strong> ${m.x_profile.followers_count}</p>
+              <p><strong>Following:</strong> ${m.x_profile.following_count}</p>
+              <p><strong>Joined:</strong> ${m.x_profile.joined_date}</p>
+              <p><strong>Last Active:</strong> ${m.x_profile.last_active}</p>
+            </div>
+            <div class="section">
+              <h3>Participation</h3>
+              <p><strong>Show:</strong> ${m.participation.show}</p>
+              <p><strong>Rank:</strong> ${m.participation.rank}</p>
+              <p><strong>Notable Performance:</strong> ${m.participation.notable_performance}</p>
             </div>
           `;
 
@@ -119,8 +133,14 @@
       });
 
     function toggleDetails(id) {
+      // Accordion: close others first
+      document.querySelectorAll('.details').forEach(d => {
+        if (d.id !== id) d.classList.remove('active');
+      });
+      // Toggle selected
       const el = document.getElementById(id);
       el.classList.toggle('active');
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   </script>
 </body>
