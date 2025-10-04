@@ -1,164 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IST Future Boys – Members</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      margin: 20px;
-    }
-
-    .card {
-      width: 150px;
+      font-family: sans-serif;
       background: #f5f5f5;
-      border-radius: 10px;
+    }
+    nav, header {
+      text-align: center;
       padding: 10px;
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 15px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .member-card {
+      background: rgba(0, 128, 128, 0.1);
+      border: 2px solid #FF69B4;
+      border-radius: 10px;
+      padding: 15px;
       text-align: center;
       cursor: pointer;
       transition: transform 0.2s;
+      position: relative;
     }
-    .card:hover {
-      transform: scale(1.05);
+    .member-card:hover {
+      transform: scale(1.03);
     }
-    .card img {
-      width: 100%;
-      border-radius: 8px;
+    .member-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .star-seal {
+      position: absolute;
+      top: 5px;
+      right: 15px;
+      font-size: 1.5em;
+      color: #FF69B4;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      padding: 2px;
+    }
+    .emoji-row {
+      font-size: 1.2em;
+      margin: 5px 0;
     }
 
-    /* Detail panel */
-    #member-detail {
+    /* The biodata panel (clean, wide) */
+    .details-panel {
       display: none;
-      margin: 30px auto;
-      max-width: 1000px;
-      padding: 20px;
-      border-top: 2px solid #ccc;
+      width: 100%;
+      background: #ffffff;
+      border-top: 3px solid #FF69B4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 40px;
+      padding: 30px 20px;
     }
-
-    #member-detail.active {
+    .details-panel.active {
       display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    #member-detail h2 {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
-      margin-top: 20px;
+    .details-heading {
+      text-align: center;
+      font-size: 2rem;
+      color: #008080;
+      margin-bottom: 20px;
     }
 
-    #member-detail .bio {
+    .details-content {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
     }
 
-    #member-detail .bio img {
-      width: 30%;
-      max-width: 250px;
-      border-radius: 10px;
+    .details-left {
+      flex: 1 1 30%; /* ~1/3 */
+      max-width: 300px;
     }
 
-    #member-detail .bio-text {
-      flex: 1;
+    .details-left img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .details-right {
+      flex: 1 1 65%; /* ~2/3 */
+    }
+
+    .details-right h3 {
+      margin-top: 0;
+      color: #FF69B4;
+      border-bottom: 2px solid #008080;
+      padding-bottom: 8px;
+    }
+
+    .gallery-block {
+      margin-top: 30px;
+    }
+    .gallery-block h3 {
+      color: #FF69B4;
+      border-bottom: 2px solid #008080;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .gallery img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     /* Tweets embed */
-    .tweets-section {
+    .tweets-block {
       margin-top: 30px;
     }
-    .tweets-section iframe {
-      width: 100% !important;
+    .tweets-block h3 {
+      color: #FF69B4;
+      border-bottom: 2px solid #008080;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .details-content {
+        grid-template-columns: 1fr;
+      }
+      .details-left {
+        margin-bottom: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1 style="text-align:center; margin:20px;">Our Members</h1>
+   <nav>
+        <a href="index.html">Home</a>
+        <a href="members.html">Members</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="news.html">News</a>
+        <a href="community.html">Community</a>
+        <a href="participants.html">Participants</a>
+    </nav>
 
-  <!-- Grid of member cards -->
-  <div class="grid" id="membersGrid"></div>
+  <header>
+    <h1>Meet the Future Boys</h1>
+  </header>
 
-  <!-- Detail Panel -->
-  <div id="member-detail">
-    <div class="bio">
-      <img id="memberPhoto" src="" alt="Member Photo">
-      <div class="bio-text">
-        <h2 id="memberName"></h2>
-        <p id="memberBio"></p>
-      </div>
+  <div class="member-grid">
+    <div class="member-card" onclick="showDetails('donggyu')">
+      <img src="profileimages/parkdonggyu.jpg" alt="Park Donggyu">
+      <span class="star-seal">🌳</span>
+      <h3>Park Donggyu</h3>
+      <div class="emoji-row">🌳</div>
+      <p>Leader</p>
     </div>
-
-    <h2>Participant</h2>
-    <div id="memberParticipant"></div>
-
-    <h2>Gallery</h2>
-    <div id="memberGallery"></div>
-
-    <div class="tweets-section">
-      <h2>Latest Tweets</h2>
-      <a class="twitter-timeline" 
-         href="https://twitter.com/ist_ent?ref_src=twsrc%5Etfw"
-         data-chrome="noheader nofooter noborders transparent"
-         data-height="400">
-         Tweets by @ist_ent
-      </a>
+    <div class="member-card" onclick="showDetails('sihwan')">
+      <img src="profileimages/kimsihwan.jpg" alt="Kim Sihwan">
+      <span class="star-seal">🤗</span>
+      <h3>Kim Sihwan</h3>
+      <div class="emoji-row">🤗</div>
+      <p>Main Dancer</p>
+    </div>
+    <div class="member-card" onclick="showDetails('arctic')"> 
+      <img src="profileimages/arctic.jpg" alt="Arctic"> 
+      <span class="star-seal">🐶</span> <h3>Arctic</h3> 
+      <div class="emoji-row">🐶</div> 
+      <p>Rapper</p>
+    </div>
+    <div class="member-card" onclick="showDetails('rensho')"> 
+      <img src="profileimages/rensho.jpg" alt="Rensho">
+      <span class="star-seal">👽</span> 
+      <h3>Rensho</h3> 
+      <div class="emoji-row">👽</div>
+      <p>Vocalist</p> 
+    </div>
+    <div class="member-card" onclick="showDetails('mystery1')"> 
+      <img src="profileimages/mystery1.jpg" alt="Mystery 1">
+      <span class="star-seal">🦊</span>
+      <h3>Mystery 1</h3>
+      <div class="emoji-row">🦊</div> 
+      <p>TBD</p>
+         </div>
+    <div class="member-card" onclick="showDetails('mystery2')"> 
+      <img src="profileimages/mystery2.jpg" alt="Mystery 2">
+      <span class="star-seal">🦢</span>
+      <h3>Mystery 2</h3> 
+      <div class="emoji-row">🦢</div> 
+      <p>TBD</p>
+    </div> 
+    <div class="member-card" onclick="showDetails('mystery3')"> 
+      <img src="profileimages/mystery3.jpg" alt="Mystery 3">
+      <span class="star-seal">🔮</span>
+      <h3>Mystery 3</h3> 
+      <div class="emoji-row">🔮</div>
+      <p>TBD</p>
     </div>
   </div>
 
+  <div class="details-panel" id="details-panel">
+    <div class="details-heading" id="detail-name">Select a member</div>
+    <div class="details-content">
+      <div class="details-left">
+        <img id="detail-photo" src="" alt="Member Photo">
+      </div>
+      <div class="details-right">
+        <h3>Biodata</h3>
+        <p><strong>Birth Name:</strong> <span id="detail-birthname">—</span></p>
+        <p><strong>Birthdate:</strong> <span id="detail-birthdate">—</span></p>
+        <p><strong>Birthplace:</strong> <span id="detail-birthplace">—</span></p>
+        <p><strong>Height:</strong> <span id="detail-height">—</span></p>
+        <p><strong>MBTI:</strong> <span id="detail-mbti">—</span></p>
+        <p><strong>Nationality:</strong> <span id="detail-nationality">—</span></p>
+        <p><strong>Education:</strong> <span id="detail-education">—</span></p>
+        <p><strong>Trainee Period:</strong> <span id="detail-trainee">—</span></p>
+
+        <h3>Participation</h3>
+        <p><strong>Show:</strong> <span id="detail-show">—</span></p>
+        <p><strong>Rank:</strong> <span id="detail-rank">—</span></p>
+        <p><strong>Notable Performance:</strong> <span id="detail-notable">—</span></p>
+
+        <h3>X Profile</h3>
+        <p id="detail-xprofile">—</p>
+      </div>
+    </div>
+
+    <div class="gallery-block">
+      <h3>Gallery</h3>
+      <div class="gallery" id="detail-gallery"></div>
+    </div>
+
+    <div class="tweets-block">
+      <h3>Latest Tweets</h3>
+      <div id="tweets-container"></div>
+    </div>
+  </div>
+
+  <!-- Twitter widgets -->
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
   <script>
-    // Load members.json
+    let memberData = {};
+
     fetch('members.json')
-      .then(res => res.json())
-      .then(members => {
-        const grid = document.getElementById('membersGrid');
-        members.forEach((member, index) => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <img src="${member.photo}" alt="${member.name}">
-            <h3>${member.name}</h3>
-          `;
-          card.addEventListener('click', () => showDetails(member));
-          grid.appendChild(card);
+      .then(r => r.json())
+      .then(data => {
+        data.members.forEach(m => {
+          memberData[m.id] = m;
         });
-      });
+      })
+      .catch(e => console.error('Error loading JSON:', e));
 
-    function showDetails(member) {
-      const detail = document.getElementById('member-detail');
-      document.getElementById('memberPhoto').src = member.photo;
-      document.getElementById('memberName').textContent = member.name;
-      document.getElementById('memberBio').textContent = member.bio || "No bio available";
-      document.getElementById('memberParticipant').textContent = member.participant || "No participant data";
-      document.getElementById('memberGallery').innerHTML = (member.gallery || [])
-        .map(img => `<img src="${img}" style="max-width:120px; margin:5px;">`).join('');
+    function showDetails(memberId) {
+      const panel = document.getElementById('details-panel');
+      const m = memberData[memberId];
+      if (!m) return;
 
-      detail.classList.add('active');
-
-      // Refresh Twitter widget each time we open details
-      if (window.twttr && window.twttr.widgets) {
-        document.querySelector(".tweets-section").innerHTML = `
-          <h2>Latest Tweets</h2>
-          <a class="twitter-timeline" 
-             href="https://twitter.com/ist_ent?ref_src=twsrc%5Etfw"
-             data-chrome="noheader nofooter noborders transparent"
-             data-height="400">
-             Tweets by @ist_ent
-          </a>`;
-        window.twttr.widgets.load();
+      if (panel.dataset.active === memberId) {
+        panel.classList.remove('active');
+        panel.dataset.active = '';
+        return;
       }
+
+      panel.dataset.active = memberId;
+      panel.classList.add('active');
+
+      document.getElementById('detail-name').textContent =
+        (m.stage_name || m.birth_name) + (m.emoji ? ' ' + m.emoji : '');
+      document.getElementById('detail-photo').src = m.image || `profileimages/${memberId}.jpg`;
+
+      document.getElementById('detail-birthname').textContent = m.birth_name || 'TBD';
+      document.getElementById('detail-birthdate').textContent = m.birthdate || 'TBD';
+      document.getElementById('detail-birthplace').textContent = m.birthplace || 'TBD';
+      document.getElementById('detail-height').textContent = m.height || 'TBD';
+      document.getElementById('detail-mbti').textContent = m.mbti_type || 'TBD';
+      document.getElementById('detail-nationality').textContent = m.nationality || 'TBD';
+      document.getElementById('detail-education').textContent = m.education || 'TBD';
+      document.getElementById('detail-trainee').textContent = m.trainee_period || 'TBD';
+
+      const part = m.participation || {};
+      document.getElementById('detail-show').textContent = part.show || 'TBD';
+      document.getElementById('detail-rank').textContent = part.rank || 'TBD';
+      document.getElementById('detail-notable').textContent = part.notable_performance || 'TBD';
+
+      const xp = m.x_profile || {};
+      if (xp.username) {
+        document.getElementById('detail-xprofile').innerHTML =
+          `<strong>${xp.username}</strong> — ${xp.bio || ''}`;
+      } else {
+        document.getElementById('detail-xprofile').textContent = xp.bio || 'TBD';
+      }
+
+      const galleryEl = document.getElementById('detail-gallery');
+      galleryEl.innerHTML = '';
+      if (Array.isArray(m.gallery) && m.gallery.length > 0) {
+        m.gallery.forEach(img => {
+          const imgEl = document.createElement('img');
+          imgEl.src = img;
+          galleryEl.appendChild(imgEl);
+        });
+      }
+
+      // Tweets embed
+      const tweetsContainer = document.getElementById('tweets-container');
+      tweetsContainer.innerHTML = '';
+      if (m.hashtag) {
+        const a = document.createElement('a');
+        a.setAttribute('class', 'twitter-timeline');
+        a.setAttribute('href', `https://twitter.com/search?q=%23${encodeURIComponent(m.hashtag)}%20(from%3Aist_ent)`);
+        a.setAttribute('data-height', '500');
+        a.textContent = `Tweets about ${m.hashtag}`;
+        tweetsContainer.appendChild(a);
+
+        // reload twitter script
+        if (window.twttr && window.twttr.widgets) {
+          window.twttr.widgets.load(tweetsContainer);
+        }
+      }
+
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   </script>
+
 </body>
 </html>
 
