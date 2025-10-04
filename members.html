@@ -59,7 +59,7 @@
       margin: 5px 0;
     }
 
-    /* The biodata panel (clean, wide) */
+    /* The biodata panel */
     .details-panel {
       display: none;
       width: 100%;
@@ -85,26 +85,24 @@
       margin-bottom: 20px;
     }
 
-       .details-content {
+    .details-content {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
     }
 
     .details-left {
-      flex: 1 1 30%; /* ~1/3 */
+      flex: 1 1 30%;
       max-width: 300px;
     }
-
     .details-left img {
       width: 100%;
       border-radius: 12px;
     }
 
     .details-right {
-      flex: 1 1 65%; /* ~2/3 */
+      flex: 1 1 65%;
     }
-
     .details-right h3 {
       margin-top: 0;
       color: #FF69B4;
@@ -133,9 +131,28 @@
       border-radius: 8px;
     }
 
+    /* Tweets Section */
+    .tweets-section {
+      background: #fff;
+      border-top: 3px solid #008080;
+      margin-top: 50px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .tweets-section h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #FF69B4;
+      margin-bottom: 20px;
+    }
+    .tweet-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     @media (max-width: 800px) {
       .details-content {
-        grid-template-columns: 1fr;
+        flex-direction: column;
       }
       .details-left {
         margin-bottom: 20px;
@@ -158,6 +175,7 @@
     <h1>Meet the Future Boys</h1>
   </header>
 
+  <!-- Member Grid -->
   <div class="member-grid">
     <div class="member-card" onclick="showDetails('donggyu')">
       <img src="profileimages/parkdonggyu.jpg" alt="Park Donggyu">
@@ -166,49 +184,10 @@
       <div class="emoji-row">🌳</div>
       <p>Leader</p>
     </div>
-    <div class="member-card" onclick="showDetails('sihwan')">
-      <img src="profileimages/kimsihwan.jpg" alt="Kim Sihwan">
-      <span class="star-seal">🤗</span>
-      <h3>Kim Sihwan</h3>
-      <div class="emoji-row">🤗</div>
-      <p>Main Dancer</p>
-    </div>
-    <div class="member-card" onclick="showDetails('arctic')"> 
-      <img src="profileimages/arctic.jpg" alt="Arctic"> 
-      <span class="star-seal">🐶</span> <h3>Arctic</h3> 
-      <div class="emoji-row">🐶</div> 
-      <p>Rapper</p>
-    </div>
-    <div class="member-card" onclick="showDetails('rensho')"> 
-      <img src="profileimages/rensho.jpg" alt="Rensho">
-      <span class="star-seal">👽</span> 
-      <h3>Rensho</h3> 
-      <div class="emoji-row">👽</div>
-      <p>Vocalist</p> 
-    </div>
-    <div class="member-card" onclick="showDetails('mystery1')"> 
-      <img src="profileimages/mystery1.jpg" alt="Mystery 1">
-      <span class="star-seal">🦊</span>
-      <h3>Mystery 1</h3>
-      <div class="emoji-row">🦊</div> 
-      <p>TBD</p>
-         </div>
-    <div class="member-card" onclick="showDetails('mystery2')"> 
-      <img src="profileimages/mystery2.jpg" alt="Mystery 2">
-      <span class="star-seal">🦢</span>
-      <h3>Mystery 2</h3> 
-      <div class="emoji-row">🦢</div> 
-      <p>TBD</p>
-    </div> 
-    <div class="member-card" onclick="showDetails('mystery3')"> 
-      <img src="profileimages/mystery3.jpg" alt="Mystery 3">
-      <span class="star-seal">🔮</span>
-      <h3>Mystery 3</h3> 
-      <div class="emoji-row">🔮</div>
-      <p>TBD</p>
-    </div>
+    <!-- Add more member-cards as needed -->
   </div>
 
+  <!-- Biodata Panel -->
   <div class="details-panel" id="details-panel">
     <div class="details-heading" id="detail-name">Select a member</div>
     <div class="details-content">
@@ -241,6 +220,22 @@
     </div>
   </div>
 
+  <!-- Tweets Section -->
+  <div class="tweets-section">
+    <h2>Latest Tweets from IST Entertainment</h2>
+    <div class="tweet-container">
+      <!-- Twitter Embed -->
+      <a class="twitter-timeline" 
+         data-theme="light" 
+         data-height="600" 
+         href="https://twitter.com/ist_ent?ref_src=twsrc%5Etfw">
+         Tweets by @ist_ent
+      </a>
+    </div>
+  </div>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
   <script>
     let memberData = {};
 
@@ -258,7 +253,6 @@
       const m = memberData[memberId];
       if (!m) return;
 
-      // Toggle: if already active same, close
       if (panel.dataset.active === memberId) {
         panel.classList.remove('active');
         panel.dataset.active = '';
@@ -268,12 +262,10 @@
       panel.dataset.active = memberId;
       panel.classList.add('active');
 
-      // Fill heading & image
       document.getElementById('detail-name').textContent =
         (m.stage_name || m.birth_name) + (m.emoji ? ' ' + m.emoji : '');
       document.getElementById('detail-photo').src = m.image || `profileimages/${memberId}.jpg`;
 
-      // Fill biodata fields
       document.getElementById('detail-birthname').textContent = m.birth_name || 'TBD';
       document.getElementById('detail-birthdate').textContent = m.birthdate || 'TBD';
       document.getElementById('detail-birthplace').textContent = m.birthplace || 'TBD';
@@ -283,13 +275,11 @@
       document.getElementById('detail-education').textContent = m.education || 'TBD';
       document.getElementById('detail-trainee').textContent = m.trainee_period || 'TBD';
 
-      // Participation
       const part = m.participation || {};
       document.getElementById('detail-show').textContent = part.show || 'TBD';
       document.getElementById('detail-rank').textContent = part.rank || 'TBD';
       document.getElementById('detail-notable').textContent = part.notable_performance || 'TBD';
 
-      // X Profile
       const xp = m.x_profile || {};
       if (xp.username) {
         document.getElementById('detail-xprofile').innerHTML =
@@ -298,7 +288,6 @@
         document.getElementById('detail-xprofile').textContent = xp.bio || 'TBD';
       }
 
-      // Gallery
       const galleryEl = document.getElementById('detail-gallery');
       galleryEl.innerHTML = '';
       if (Array.isArray(m.gallery) && m.gallery.length > 0) {
@@ -309,13 +298,11 @@
         });
       }
 
-      // Scroll to panel
       panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   </script>
 
 </body>
 </html>
-
 
 
