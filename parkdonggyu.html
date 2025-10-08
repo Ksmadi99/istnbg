@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park Donggyu | The Solar All-Rounder 🌌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); color: #fff; overflow-x: hidden; }
+        header { height: 100vh; background: url('https://pbs.twimg.com/media/GyNIB5ebQAATPuF.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .hero-content { position: relative; z-index: 1; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 4rem; color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-bottom: 1rem; transition: transform 0.3s; }
+        h1:hover { transform: scale(1.05); }
+        .subtitle { font-size: 1.5rem; color: #ccc; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 1rem 0; z-index: 10; text-align: center; }
+        nav a { color: #ffd700; text-decoration: none; margin: 0 1rem; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: #fff; }
+        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #ffd700; text-align: center; margin-bottom: 2rem; cursor: pointer; transition: color 0.3s; }
+        h2:hover { color: #fff; }
+        .biodata-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .biodata-item { background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px; backdrop-filter: blur(10px); transition: transform 0.3s; }
+        .biodata-item:hover { transform: translateY(-5px); }
+        .facts ul { list-style: none; }
+        .facts li { margin: 0.5rem 0; font-style: italic; }
+        .timeline { display: flex; flex-direction: column; gap: 1rem; }
+        .timeline-item { background: rgba(255,215,0,0.1); padding: 1rem; border-left: 3px solid #ffd700; cursor: pointer; transition: background 0.3s; }
+        .timeline-item:hover { background: rgba(255,215,0,0.2); }
+        .timeline-detail { display: none; margin-top: 0.5rem; font-size: 0.9rem; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.3s; }
+        .gallery img:hover { transform: scale(1.05); }
+        .video-embed { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 50%; z-index: 20; display: none; background: #000; border-radius: 10px; }
+        .close { position: absolute; top: 10px; right: 10px; color: #fff; font-size: 2rem; cursor: pointer; }
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #ffd700; color: #000; padding: 1rem; border-radius: 50%; cursor: pointer; display: none; transition: opacity 0.3s; }
+        .back-to-top:hover { opacity: 0.8; }
+        footer { text-align: center; padding: 2rem; background: rgba(0,0,0,0.5); }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } section { padding: 2rem 1rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#biodata">Bio</a>
+        <a href="#activities">Activities</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#social">Social</a>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <h1>Park Donggyu</h1>
+            <p class="subtitle">The All-Rounder Solar 🌌 | IST Entertainment Trainee | Boys II Planet Ace</p>
+        </div>
+    </header>
+
+    <section id="biodata">
+        <h2>🌟 Biodata</h2>
+        <div class="biodata-grid">
+            <div class="biodata-item"><strong>Birth Name:</strong> Park Dong-gyu (박동규)</div>
+            <div class="biodata-item"><strong>Birthday:</strong> March 16, 2005 (Pisces 🐟)</div>
+            <div class="biodata-item"><strong>Height:</strong> 182 cm (6'0")</div>
+            <div class="biodata-item"><strong>Nationality:</strong> Korean</div>
+            <div class="biodata-item"><strong>MBTI:</strong> INTP (Logical Introvert)</div>
+            <div class="biodata-item"><strong>Representative Emoji:</strong> 🪐</div>
+            <div class="biodata-item"><strong>Agency:</strong> IST Entertainment (Joined 2025)</div>
+            <div class="biodata-item"><strong>Previous:</strong> Pledis Entertainment Trainee</div>
+        </div>
+        <div class="facts">
+            <h3>Fun Facts</h3>
+            <ul>
+                <li>Trained for 4 years & 4 months before *Boys II Planet*.</li>
+                <li>Specialties: Vocals, Rap, Leg Wrestling 💪 (Surprised fans on the show!).</li>
+                <li>Hobbies: Café hopping, people-watching, biking to work 🚲.</li>
+                <li>Role Model: Jay Park (Admires his all-rounder vibe).</li>
+                <li>Nickname: Gyudong (From "Gyu" + "Dong").</li>
+                <li>Family: Parents (Close-knit).</li>
+                <li>Education: Hanlim Multi Art School (Practical Music).</li>
+                <li>Self-Described: "Serious leader with a charming voice" 🎤.</li>
+                <li>Close Friends: TWS' Dohoon, B:MY BOYZ's Kang Junseong, Boys II Planet's Kim Si-hwan.</li>
+                <li>Almost quit training but *Boys II Planet* reignited his passion! 🔥</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="activities">
+        <h2>🎤 Activities & Participation</h2>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">Donggyu's journey as an all-rounder shines brightest on survival stages. Click videos to watch highlights!</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="biodata-item" style="text-align: center;">
+                <h3>Boys II Planet (2025)</h3>
+                <p>Represented IST Entertainment. Ranked 15th in finale—missed debut with ALPHA DRIVE ONE by a whisker! Excelled in vocals, rap, & dance. Part of team 777 for "Lucky Macho" (Debut Concept Battle).</p>
+                <a href="https://www.youtube.com/watch?v=example-boys2planet-clip" target="_blank" style="color: #ffd700;">Watch PR Video</a> | <button onclick="playVideo('https://www.youtube.com/embed/fkMq9YkJHkw?autoplay=1')">K-Star Next Door Ep.</button>
+            </div>
+            <div class="biodata-item" style="text-align: center;">
+                <h3>K-Star Next Door Appearance (Oct 2025)</h3>
+                <p>Guest star with Haneum, Liyu, Zihao & Suren. Performed "Soda Pop" (impressive vocals!) & "Chains" as center. Introduced as "Boys II Planet's All-Rounder." Fun chaos with host Jonathan! 😂</p>
+                <a href="https://www.youtube.com/watch?v=fkMq9YkJHkw" target="_blank" style="color: #ffd700;">Full Episode</a>
+            </div>
+            <div class="biodata-item" style="text-align: center;">
+                <h3>Other Performances</h3>
+                <p>"Hola Solar" (group track), "Brat Attitude" & "How To Fly" (Final Debut Battle). Hobbies tie into casual vlogs—expect more post-show!</p>
+                <a href="https://kpop.fandom.com/wiki/Park_Dong_Gyu" target="_blank" style="color: #ffd700;">Full Discog</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <h2>📅 Achievements Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item" onclick="toggleDetail(this)">
+                <strong>2025 (Pre-Debut)</strong>: Joined IST after Pledis.
+                <div class="timeline-detail">Trained under big-label system—linked to SEVENTEEN & TWS. Built vocals inspired by Park Hyo-shin.</div>
+            </div>
+            <div class="timeline-item" onclick="toggleDetail(this)">
+                <strong>June 12, 2025</strong>: Boys II Planet Intro.
+                <div class="timeline-detail">Debuted as trainee #15. Fans fell for his height, charm, & leg wrestling skills!</div>
+            </div>
+            <div class="timeline-item" onclick="toggleDetail(this)">
+                <strong>July-Aug 2025</strong>: Early Missions.
+                <div class="timeline-detail">Shone in open stages & behind-the-scenes (roommate with Kim Jun-min—snack raids! 🍟).</div>
+            </div>
+            <div class="timeline-item" onclick="toggleDetail(this)">
+                <strong>Sept 2025</strong>: Concept Battles.
+                <div class="timeline-detail">"Lucky Macho" with 777. Dramatic rise—fans call him "drama king" for his story arc.</div>
+            </div>
+            <div class="timeline-item" onclick="toggleDetail(this)">
+                <strong>Finale (2025)</strong>: Ranked 15th.
+                <div class="timeline-detail">Heartbreaking exit, but legacy as all-rounder lives on. Performed "How To Fly."</div>
+            </div>
+            <div class="timeline-item" onclick="toggleDetail(this)">
+                <strong>Oct 7, 2025</strong>: K-Star Next Door.
+                <div class="timeline-detail">Post-show glow-up! Danced "Soda Pop" & centered "Chains." Global fans buzzing.</div>
+            </div>
+            <div class="timeline-item" onclick="toggleDetail(this)">
+                <strong>Future?</strong>: Solo Debut Tease.
+                <div class="timeline-detail">Whispers of IST projects. Stay tuned—his voice will captivate! 🎶</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>🖼️ Gallery (Click to Expand)</h2>
+        <button onclick="toggleGallery()" style="display: block; margin: 0 auto 2rem; padding: 0.5rem 1rem; background: #ffd700; color: #000; border: none; border-radius: 5px; cursor: pointer;">Toggle Full Gallery</button>
+        <div class="gallery" id="galleryGrid">
+            <img src="https://pbs.twimg.com/media/G2pZI8OWUAAkyag.jpg" alt="Donggyu Intro" onclick="enlargeImg(this)">
+            <img src="https://pbs.twimg.com/media/GyCw4vVaQAAJX6k.jpg" alt="Grad Pic" onclick="enlargeImg(this)">
+            <img src="https://pbs.twimg.com/media/G0DSgZ8XYAAbB-9.png" alt="MNET+ Shot" onclick="enlargeImg(this)">
+            <img src="https://pbs.twimg.com/media/GyjjZV4XMAEVTul.jpg" alt="Anecdote" onclick="enlargeImg(this)">
+            <img src="https://pbs.twimg.com/media/G0PA0nsbwAAKF9y.jpg" alt="Punching Machine" onclick="enlargeImg(this)">
+            <img src="https://pbs.twimg.com/media/GzgQvA3WgAAUz8M.jpg" alt="Middle School Friend" onclick="enlargeImg(this)">
+        </div>
+    </section>
+
+    <section id="social">
+        <h2>🔗 Connect & Support</h2>
+        <p style="text-align: center;">Join the Donggyu Nation! Follow global fans on X for updates in every language (KR, EN, JP, PT-BR, FR, etc.).</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <a href="https://x.com/DONGGYUGLOBAL" target="_blank" class="biodata-item" style="text-align: center;">@DONGGYUGLOBAL (EN/Global)</a>
+            <a href="https://x.com/DonggyuBrasil" target="_blank" class="biodata-item" style="text-align: center;">@DonggyuBrasil (PT-BR)</a>
+            <a href="https://x.com/DONGGYU_FANFR" target="_blank" class="biodata-item" style="text-align: center;">@DONGGYU_FANFR (FR)</a>
+            <a href="https://x.com/planet_plum_" target="_blank" class="biodata-item" style="text-align: center;">@planet_plum_ (JP Fan)</a>
+            <a href="https://kprofiles.com/park-donggyu-profile-and-facts/" target="_blank" class="biodata-item" style="text-align: center;">KProfiles Bio</a>
+            <a href="https://kpop.fandom.com/wiki/Park_Dong_Gyu" target="_blank" class="biodata-item" style="text-align: center;">Kpop Wiki</a>
+        </div>
+    </section>
+
+    <div class="video-embed" id="videoModal">
+        <span class="close" onclick="closeVideo()">&times;</span>
+        <iframe id="videoFrame" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="back-to-top" onclick="scrollToTop()" id="backToTop">↑</div>
+
+    <footer>
+        <p>&copy; 2025 Donggyu Solar Fanpage | Made with ❤️ for the All-Rounder | Data from X, Kpop Profiles & Fandom. [](grok_render_citation_card_json={"cardIds":["a655ab","4e826b","6ccb14"]})</p>
+    </footer>
+
+    <script>
+        function toggleDetail(el) { el.querySelector('.timeline-detail').style.display = el.querySelector('.timeline-detail').style.display === 'block' ? 'none' : 'block'; }
+        function playVideo(url) { document.getElementById('videoFrame').src = url; document.getElementById('videoModal').style.display = 'block'; }
+        function closeVideo() { document.getElementById('videoModal').style.display = 'none'; document.getElementById('videoFrame').src = ''; }
+        function enlargeImg(img) { alert('Enlarged: ' + img.alt + '\n(Pro tip: Add lightbox JS for modals!)'); } // Placeholder—add Magnific Popup for real zoom.
+        function toggleGallery() { const grid = document.getElementById('galleryGrid'); grid.style.display = grid.style.display === 'none' ? 'grid' : 'none'; }
+        window.onscroll = () => { document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'block' : 'none'; };
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    </script>
+</body>
+</html>
